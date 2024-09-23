@@ -1,0 +1,111 @@
+{
+	"name": "Poker",
+	"numOfCards":5,
+	"debug" : false,
+	"setHands" : false,
+	"debugHands":[
+		["as","5c","ad","2h","3c"],
+		["2s","2c","kd","5h","5c"],
+		["js","jc","kd","kh","2c"],
+		["jh","jc","ks","kc","2c"]
+	],
+	"players": [
+		{
+			"id": 1,
+			"name": "Shawn",
+			"cards": [],
+			"wins": 0,
+			"pokerHand":{
+				"text": "No Hand",
+				"handScore": 0
+			}
+		},
+		{
+			"id": 2,
+			"name": "Clara",
+			"cards": [],
+			"wins": 0,
+			"pokerHand":{
+				"text": "No Hand",
+				"handScore": 0
+			}
+		},
+		{
+			"id": 3,
+			"name": "Jessica",
+			"cards": [],
+			"wins": 0,
+			"pokerHand":{
+				"text": "No Hand",
+				"handScore": 0
+			}
+		},
+		{
+			"id": 4,
+			"name": "Elsa",
+			"cards": [],
+			"wins": 0,
+			"pokerHand":{
+				"text": "No Hand",
+				"handScore": 0
+			}
+		}
+
+	],
+	"cards":[
+		{ "id": 0, "card": "as", "rank": "a", "rankValue":14, "suit": "spades", "unicode": "🂡" },
+		{ "id": 1, "card": "2s", "rank": "2", "rankValue":2, "suit": "spades", "unicode": "🂢" },
+		{ "id": 2, "card": "3s", "rank": "3", "rankValue":3, "suit": "spades", "unicode": "🂣" },
+		{ "id": 3, "card": "4s", "rank": "4", "rankValue":4, "suit": "spades", "unicode": "🂤" },
+		{ "id": 4, "card": "5s", "rank": "5", "rankValue":5, "suit": "spades", "unicode": "🂥" },
+		{ "id": 5, "card": "6s", "rank": "6", "rankValue":6, "suit": "spades", "unicode": "🂦" },
+		{ "id": 6, "card": "7s", "rank": "7", "rankValue":7, "suit": "spades", "unicode": "🂧" },
+		{ "id": 7, "card": "8s", "rank": "8", "rankValue":8, "suit": "spades", "unicode": "🂨" },
+		{ "id": 8, "card": "9s", "rank": "9", "rankValue":9, "suit": "spades", "unicode": "🂩" },
+		{ "id": 9, "card": "10s", "rank": "10", "rankValue":10, "suit": "spades", "unicode": "🂪" },
+		{ "id": 10, "card": "js", "rank": "j", "rankValue":11, "suit": "spades", "unicode": "🂫" },
+		{ "id": 11, "card": "qs", "rank": "q", "rankValue":12, "suit": "spades", "unicode": "🂭" },
+		{ "id": 12, "card": "ks", "rank": "k", "rankValue":13, "suit": "spades", "unicode": "🂮" },
+		{ "id": 13, "card": "ac", "rank": "a", "rankValue":14, "suit": "clubs", "unicode": "🃑" },
+		{ "id": 14, "card": "2c", "rank": "2", "rankValue":2, "suit": "clubs", "unicode": "🃒" },
+		{ "id": 15, "card": "3c", "rank": "3", "rankValue":3, "suit": "clubs", "unicode": "🃓" },
+		{ "id": 16, "card": "4c", "rank": "4", "rankValue":4, "suit": "clubs", "unicode": "🃔" },
+		{ "id": 17, "card": "5c", "rank": "5", "rankValue":5, "suit": "clubs", "unicode": "🃕" },
+		{ "id": 18, "card": "6c", "rank": "6", "rankValue":6, "suit": "clubs", "unicode": "🃖" },
+		{ "id": 19, "card": "7c", "rank": "7", "rankValue":7, "suit": "clubs", "unicode": "🃗" },
+		{ "id": 20, "card": "8c", "rank": "8", "rankValue":8, "suit": "clubs", "unicode": "🃘" },
+		{ "id": 21, "card": "9c", "rank": "9", "rankValue":9, "suit": "clubs", "unicode": "🃙" },
+		{ "id": 22, "card": "10c", "rank": "10", "rankValue":10, "suit": "clubs", "unicode": "🃚" },
+		{ "id": 23, "card": "jc", "rank": "j", "rankValue":11, "suit": "clubs", "unicode": "🃛" },
+		{ "id": 24, "card": "qc", "rank": "q", "rankValue":12, "suit": "clubs", "unicode": "🃝" },
+		{ "id": 25, "card": "kc", "rank": "k", "rankValue":13, "suit": "clubs", "unicode": "🃞" },
+		{ "id": 26, "card": "ad", "rank": "a", "rankValue":14, "suit": "diamonds", "unicode": "🃁" },
+		{ "id": 27, "card": "2d", "rank": "2", "rankValue":2, "suit": "diamonds", "unicode": "🃂" },
+		{ "id": 28, "card": "3d", "rank": "3", "rankValue":3, "suit": "diamonds", "unicode": "🃃" },
+		{ "id": 29, "card": "4d", "rank": "4", "rankValue":4, "suit": "diamonds", "unicode": "🃄" },
+		{ "id": 30, "card": "5d", "rank": "5", "rankValue":5, "suit": "diamonds", "unicode": "🃅" },
+		{ "id": 31, "card": "6d", "rank": "6", "rankValue":6, "suit": "diamonds", "unicode": "🃆" },
+		{ "id": 32, "card": "7d", "rank": "7", "rankValue":7, "suit": "diamonds", "unicode": "🃇" },
+		{ "id": 33, "card": "8d", "rank": "8", "rankValue":8, "suit": "diamonds", "unicode": "🃈" },
+		{ "id": 34, "card": "9d", "rank": "9", "rankValue":9, "suit": "diamonds", "unicode": "🃉" },
+		{ "id": 35, "card": "10d", "rank": "10", "rankValue":10, "suit": "diamonds", "unicode": "🃊" },
+		{ "id": 36, "card": "jd", "rank": "j", "rankValue":11, "suit": "diamonds", "unicode": "🃋" },
+		{ "id": 37, "card": "qd", "rank": "q", "rankValue":12, "suit": "diamonds", "unicode": "🃍" },
+		{ "id": 38, "card": "kd", "rank": "k", "rankValue":13, "suit": "diamonds", "unicode": "🃎" },
+		{ "id": 39, "card": "ah", "rank": "a", "rankValue":14, "suit": "hearts", "unicode": "🂱" },
+		{ "id": 40, "card": "2h", "rank": "2", "rankValue":2, "suit": "hearts", "unicode": "🂲" },
+		{ "id": 41, "card": "3h", "rank": "3", "rankValue":3, "suit": "hearts", "unicode": "🂳" },
+		{ "id": 42, "card": "4h", "rank": "4", "rankValue":4, "suit": "hearts", "unicode": "🂴" },
+		{ "id": 43, "card": "5h", "rank": "5", "rankValue":5, "suit": "hearts", "unicode": "🂵" },
+		{ "id": 44, "card": "6h", "rank": "6", "rankValue":6, "suit": "hearts", "unicode": "🂶" },
+		{ "id": 45, "card": "7h", "rank": "7", "rankValue":7, "suit": "hearts", "unicode": "🂷" },
+		{ "id": 46, "card": "8h", "rank": "8", "rankValue":8, "suit": "hearts", "unicode": "🂸" },
+		{ "id": 47, "card": "9h", "rank": "9", "rankValue":9, "suit": "hearts", "unicode": "🂹" },
+		{ "id": 48, "card": "10h", "rank": "10", "rankValue":10, "suit": "hearts", "unicode": "🂺" },
+		{ "id": 49, "card": "jh", "rank": "j", "rankValue":11, "suit": "hearts", "unicode": "🂻" },
+		{ "id": 50, "card": "qh", "rank": "q", "rankValue":12, "suit": "hearts", "unicode": "🂽" },
+		{ "id": 51, "card": "kh", "rank": "k", "rankValue":13, "suit": "hearts", "unicode": "🂾" }
+	]
+
+
+}
