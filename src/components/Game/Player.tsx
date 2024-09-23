@@ -13,7 +13,7 @@ type PlayerProps = {
 const Player = (props: PlayerProps) => {
     return ( 
         <div className={"playerHolder "+ props.winner} key = {props.player.id}>
-            <p>Player # {props.player.id} </p>
+            <p>Player # {props.player.id} | {props.player.name}</p>
             <Hand
                 player = {props.player}
                 onCardChange={props.onCardChange}
