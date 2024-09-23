@@ -105,6 +105,18 @@
 		{ "id": 49, "card": "jh", "rank": "j", "rankValue":11, "suit": "hearts", "unicode": "🂻" },
 		{ "id": 50, "card": "qh", "rank": "q", "rankValue":12, "suit": "hearts", "unicode": "🂽" },
 		{ "id": 51, "card": "kh", "rank": "k", "rankValue":13, "suit": "hearts", "unicode": "🂾" }
+	],
+	"pokerHands" : [
+		"High Card",
+		"One Pair",
+		"Two Pair",
+		"Three of a Kind",
+		"Straight",
+		"Flush",
+		"Full House",
+		"Four of a Kind",
+		"Straight Flush",
+		"Royal Flush"
 	]
 
 

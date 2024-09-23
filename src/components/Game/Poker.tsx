@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Player from "./Player";
 import {PlayerCard, PlayerInterface, PokerHand} from '../../scripts/types'
-import { shuffle, createPlayerHandArray, FindWinner, determinePokerHand } from '../../scripts/pokerUtils';
+import { shuffle, createPlayerHandArray, FindWinner, determinePokerHand} from '../../scripts/pokerUtils';
 
 type PokerProps = {
     settings: any
@@ -16,14 +16,13 @@ const Poker = (props: PokerProps) => {
     let [deckIndex, setDeckIndex] = useState(0);
     let [dealBtn, setDealBtn] = useState('Deal');
     const [dealt, setDealt] = useState(false);
+    const [stats, setStats] = useState<PokerHand[]>([]);
 
     // setting players from settings
     const [gamePlayers, setGamePlayers] = useState<PlayerInterface[]>(props.settings.players);
 
     // other game variables needed
     const [winner, setWinner] = useState<number[]>([]);
-
-
 
     // save cards that have been selected
     const handleCardSelect = (cardID:number, cardState:PlayerCard) => {
@@ -119,6 +118,9 @@ const Poker = (props: PokerProps) => {
         // only determine winner after the draw
         if (dealt) {
 
+            // add hands to stats state, to show numbers
+            setStats([...stats, ...gamePlayers.map( (player) => {return player.pokerHand;})])
+
             // if players dont have cards, dont determine winner
             if(gamePlayers[0].cards.length > 0) {
                 let winnerIndex = FindWinner(
@@ -171,6 +173,21 @@ const Poker = (props: PokerProps) => {
                     ))}
                 </div>
             )}
+
+            <div className="pokerStats">
+                <table>
+                    <tr>
+                        <th>Poker Hand</th>
+                        <th>Frequency</th>
+                    </tr>
+                {props.settings.pokerHands.map((pokerHand:string) => (
+                    <tr>
+                        <td>{pokerHand}</td>
+                        <td>{stats.reduce( (acc:number, stat) => {if(stat.text == pokerHand) {acc++;}; return acc; },0)} </td>
+                    </tr>
+                ))}
+                </table>
+            </div>
 
         </div>
     );
