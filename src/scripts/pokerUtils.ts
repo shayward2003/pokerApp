@@ -51,7 +51,6 @@ export const FindWinner = (players:PokerHand[]):number[] => {
             currentPlayerIndex:number,
             players:PokerHand[]
         ) => {
-            console.log(player);
             // if no set winners OR handScore is larger, set the new winner hand
             if(winners.length === 0 || player.handScore > players[winners[0]].handScore) {
                 return [currentPlayerIndex];
