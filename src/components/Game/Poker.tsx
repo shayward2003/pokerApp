@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Player from "./Player";
 import {PlayerCard, PlayerInterface, PokerHand} from '../../scripts/types'
 import { shuffle, createPlayerHandArray, FindWinner, determinePokerHand} from '../../scripts/pokerUtils';
@@ -10,19 +10,20 @@ type PokerProps = {
 
 const Poker = (props: PokerProps) => {
 
+    let startGame = true;
     // deck init settings
     let [cardData] = useState<PlayerCard[]>(props.settings.cards);
     let [cards, setCards] = useState<number[]>(Array.from(Array(52).keys()));
     let [deckIndex, setDeckIndex] = useState(0);
     let [dealBtn, setDealBtn] = useState('Deal');
-    const [dealt, setDealt] = useState(false);
-    const [stats, setStats] = useState<PokerHand[]>([]);
+    let [dealt, setDealt] = useState(false);
+    let [stats, setStats] = useState<PokerHand[]>([]);
 
     // setting players from settings
-    const [gamePlayers, setGamePlayers] = useState<PlayerInterface[]>(props.settings.players);
+    let [gamePlayers, setGamePlayers] = useState<PlayerInterface[]>(props.settings.players);
 
     // other game variables needed
-    const [winner, setWinner] = useState<number[]>([]);
+    let [winner, setWinner] = useState<number[]>([]);
 
     // save cards that have been selected
     const handleCardSelect = (cardID:number, cardState:PlayerCard) => {
@@ -41,7 +42,47 @@ const Poker = (props: PokerProps) => {
         });
     }
 
+    const delay = (ms:number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+
+    // added method that allows for delay on updating player hands on draw
+    const playerHandChangeWithDelay = async () => {
+        let i = 0;
+
+        for (const player of gamePlayers) {
+            // Wait 1 second before updating the next player
+            await delay(props.settings.msBetweenHandCardDraw);
+
+            let playerID = player.id;
+            console.log(playerID);
+
+            setGamePlayers((prevPlayers) =>
+                prevPlayers.map((player) => {
+                    if (playerID === player.id) {
+                        player.cards = player.cards.map((card) => {
+                            if (card.selected) {
+                                let newCard = cardData[cards[deckIndex + i]];
+                                newCard.selected = false;
+                                i++;
+                                return newCard;
+                            }
+                            return card;
+                        });
+                        return player;
+                    }
+                    return player;
+                })
+            );
+        }
+    };
+
+
+
+    useEffect(() => {
+        dealDraw();
+
+
+    }, [startGame]);
     // deal/draw cards
     const dealDraw = () => {
         // first deal, not the draw
@@ -92,18 +133,26 @@ const Poker = (props: PokerProps) => {
             // we have already dealt so now we are drawing selected cards for players
             setDealBtn('Deal New Hand');
 
+
             let i = 0;
-            // loop through players hands, if card is selected, deal top card on deck
-            setGamePlayers( gamePlayers.map( (player) => {
-                player.cards = player.cards.map((card) => {
-                    if (card.selected){
-                        card = cardData[cards[deckIndex+i]]
-                        i++;
-                    }
-                    return card;
-                });
-                return player;
-            }));
+
+            playerHandChangeWithDelay();
+
+
+
+
+            // });
+            // // loop through players hands, if card is selected, deal top card on deck
+            // setGamePlayers( gamePlayers.map( (player) => {
+            //     player.cards = player.cards.map((card) => {
+            //         if (card.selected){
+            //             card = cardData[cards[deckIndex+i]]
+            //             i++;
+            //         }
+            //         return card;
+            //     });
+            //     return player;
+            // }));
             // set new deck index after all the dealing
             setDeckIndex(deckIndex+i);
             setDealt(false);
@@ -183,7 +232,7 @@ const Poker = (props: PokerProps) => {
                 {props.settings.pokerHands.map((pokerHand:string) => (
                     <tr>
                         <td>{pokerHand}</td>
-                        <td>{stats.reduce( (acc:number, stat) => {if(stat.text == pokerHand) {acc++;}; return acc; },0)} </td>
+                        <td>{stats.reduce( (acc:number, stat) => {if(stat.text === pokerHand) {acc++;}; return acc; },0)} </td>
                     </tr>
                 ))}
                 </table>
